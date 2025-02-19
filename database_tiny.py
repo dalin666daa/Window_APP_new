@@ -1,0 +1,10 @@
+from tinydb import TinyDB , Query # database is created based on UI data updation at the start of the application,then last inserted data is fetched to check the individual count of the detected objects from the camera frame   
+e1_cnt_from_ui = input("enter earing 1 count :")
+e2_cnt_from_ui= input("enter earing 2 count :")
+e3_cnt_from_ui = input("enter earing 3 count :")
+db = TinyDB(r"D:\Window_APP_4\Window_APP\tinydb1.json")
+table = db.table('Counter :')
+# table.insert({'earing1_cnt': 2, 'earing2_cnt': 2,'earing3_cnt': 2})
+table.insert({'earing1_cnt': f"{e1_cnt_from_ui}"  , 'earing2_cnt': f"{e2_cnt_from_ui}",'earing3_cnt': f"{e3_cnt_from_ui}"})
+# table.upsert({'earing1_cnt': 3, 'earing2_cnt': 2,'earing3_cnt': 2})
+print(table.get(cond=None,doc_id=table._get_next_id() - 1))
